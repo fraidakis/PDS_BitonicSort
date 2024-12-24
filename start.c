@@ -43,8 +43,6 @@ int compare_des(const void *a, const void *b)
     return (*(int *)b - *(int *)a);
 }
 
-/* ok ----------------------------------------------- ok */
-
 /**
  * Swap elements if they are in the wrong order based on the sorting direction
  * @param a Pointer to first element
@@ -97,7 +95,7 @@ void bitonic_merge_partial(int *arr, int start, int size, bool dir)
     }
 }
 
-void debug_print(int *local_array, int local_size, int rank, int nprocs, int size, int step)
+void debug_print(int *local_array, int local_size, int rank, int numProcesses, int size, int step)
 {
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -106,7 +104,7 @@ void debug_print(int *local_array, int local_size, int rank, int nprocs, int siz
 
     if (rank == 0)
     {
-        global_array = malloc(nprocs * local_size * sizeof(int));
+        global_array = malloc(numProcesses * local_size * sizeof(int));
     }
 
     MPI_Gather(local_array, local_size, MPI_INT,
@@ -117,7 +115,7 @@ void debug_print(int *local_array, int local_size, int rank, int nprocs, int siz
     {
 
         int processor = 0;
-        for (int i = 0; i < nprocs * local_size; i++)
+        for (int i = 0; i < numProcesses * local_size; i++)
         {
             if (i % local_size == 0)
             {
@@ -129,7 +127,7 @@ void debug_print(int *local_array, int local_size, int rank, int nprocs, int siz
         printf("\n\n");
         free(global_array);
 
-        for (int i = 0; i < nprocs; i++)
+        for (int i = 0; i < numProcesses; i++)
         {
             printf("\nDir of proccess %d: %s", i, (((i >> (int)(log2(size) + 1)) & 1) == ((i >> (int)log2(size)) & 1)) ? "ASC" : "DES");
         }
@@ -143,12 +141,21 @@ void debug_print(int *local_array, int local_size, int rank, int nprocs, int siz
     MPI_Barrier(MPI_COMM_WORLD);
 }
 
-/* ok ----------------------------------------------- ok */
+/**
+ * Get the direction of the bitonic sequence based on the rank and dimension
+ * !Check if the bit at the dimension position is the same as the bit at the dimension + 1 position
+ * @param rank Process rank
+ * @param dimension Hypercube dimension
+ * @return TRUE for ascending, FALSE for descending
+ */
+bool getSortingDirection(int rank, int dimension)
+{
+    return (((rank >> (dimension + 1)) & 1) == ((rank >> dimension) & 1));
+}
+
 
 int main(int argc, char **argv)
 {
-
-    /* ok ----------------------------------------------- ok */
 
     // Check for correct number of arguments
     if (argc != 3)
@@ -167,16 +174,16 @@ int main(int argc, char **argv)
     MPI_Init(&argc, &argv);
 
     // Get process rank and total number of processes
-    int rank, nprocs;
+    int rank, numProcesses;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
+    MPI_Comm_size(MPI_COMM_WORLD, &numProcesses);
 
     // Validate input parameters
-    if (nprocs != (1 << p))
+    if (numProcesses != (1 << p))
     {
         if (rank == 0)
         {
-            fprintf(stderr, "Error: Number of processes must be 2^p. Size = %d", nprocs);
+            fprintf(stderr, "Error: Number of processes must be 2^p. Size = %d", numProcesses);
         }
         MPI_Finalize();
         return 1;
@@ -184,7 +191,7 @@ int main(int argc, char **argv)
 
     // Calculate local array size
     int local_size = 1 << q; // 2^q elements per process
-    int total_size = local_size * nprocs;
+    int total_size = local_size * numProcesses;
 
     // Allocate memory for local array
     int *local_array = malloc(local_size * sizeof(int));
@@ -203,7 +210,7 @@ int main(int argc, char **argv)
 
     if (rank == 0)
     {
-        sequenteal_array = malloc(nprocs * local_size * sizeof(int));
+        sequenteal_array = malloc(numProcesses * local_size * sizeof(int));
     }
 
     MPI_Gather(local_array, local_size, MPI_INT,
@@ -220,20 +227,23 @@ int main(int argc, char **argv)
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    for (int size = 2; size <= nprocs; size *= 2)      // ! log2(size) = hypercube dimension
-    {                                                  // Number of processes
-        for (int step = size / 2; step > 0; step /= 2) // ! log2(step) = distance between processes (rank, partner)
-        {                                              // Bitonic sort loop
-            // Debugging barrier to synchronize processes
 
-            // debug_print(local_array, local_size, rank, nprocs, size, step);
+
+    int max_hypercube_dimension = log2(numProcesses);
+
+    for (int dimension = 1; dimension <= max_hypercube_dimension; dimension++)
+    { 
+        for (int dist = 1 << (dimension - 1); dist > 0; dist >>= 1)
+        { 
+
+            // debug_print(local_array, local_size, rank, numProcesses, 1 << dimension, dist);
 
             // Determine partner process
-            int partner = rank ^ step; // XOR operation to find partner process (bitwise complement)
+            int partner = rank ^ dist; // XOR operation to find partner process (bitwise complement)
 
             // Determine sorting direction (ascending or descending)
-            bool dir = (((rank >> (int)(log2(size) + 1)) & 1) == ((rank >> (int)log2(size)) & 1));
-            bool partenr_dir = (((partner >> (int)(log2(size) + 1)) & 1) == ((partner >> (int)log2(size)) & 1));
+            bool dir = getSortingDirection(rank, dimension);
+            bool partenr_dir = getSortingDirection(partner, dimension);
 
             // Exchange data with partner process
             MPI_Sendrecv(local_array, local_size, MPI_INT, partner, 0,
@@ -247,7 +257,7 @@ int main(int argc, char **argv)
             memcpy(merged_array, local_array, local_size * sizeof(int));
             memcpy(merged_array + local_size, recv_buffer, local_size * sizeof(int));
 
-            if (step == 1)
+            if (dist == 1)
                 bitonic_merge(merged_array, 0, 2 * local_size, dir);
             else
                 bitonic_merge_partial(merged_array, 0, 2 * local_size, dir);
@@ -276,20 +286,20 @@ int main(int argc, char **argv)
         }
     }
 
-    if (rank == nprocs - 1)
+    if (rank == numProcesses - 1)
     {
         end = get_time_in_seconds();       // Stop timer
         double elapsed_time = end - start; // Calculate elapsed time
         printf("MPI execution time : %f second\n", elapsed_time);
     }
 
-    // debug_print(local_array, local_size, rank, nprocs, 0, 0);
+    // debug_print(local_array, local_size, rank, numProcesses, 0, 0);
 
     if (rank == 0)
     {
         start = get_time_in_seconds(); // Start timer
 
-        qsort(sequenteal_array, nprocs * local_size, sizeof(int), compare_asc);
+        qsort(sequenteal_array, numProcesses * local_size, sizeof(int), compare_asc);
 
         end = get_time_in_seconds();       // Stop timer
         double elapsed_time = end - start; // Calculate elapsed time
@@ -306,8 +316,6 @@ int main(int argc, char **argv)
     MPI_Gather(local_array, local_size, MPI_INT,
                global_array, local_size, MPI_INT,
                0, MPI_COMM_WORLD);
-
-    // Print sorted global array
 
     // Verify sorting on process 0
     if (rank == 0)
@@ -332,7 +340,7 @@ int main(int argc, char **argv)
         }
 
         printf("Sorting %d elements across %d processes %s\n",
-               total_size, nprocs, is_sorted ? "SUCCESSFUL" : "FAILED");
+               total_size, numProcesses, is_sorted ? "SUCCESSFUL" : "FAILED");
 
         free(verify_array);
         free(global_array);

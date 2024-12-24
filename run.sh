@@ -6,6 +6,6 @@ fi
 
 q=$1
 p=$2
-mpicc -o start start.c -lm
+mpicc -o start final.c
 # mpiexec --use-hwthread-cpus -n $((2**p)) ./start $q $p
 mpiexec --oversubscribe -n $((2**p)) ./start $q $p
