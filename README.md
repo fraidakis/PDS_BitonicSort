@@ -3,15 +3,15 @@
 This repository contains a hybrid parallel-sequential implementation of the Bitonic Sort algorithm designed for distributed execution using MPI (Message Passing Interface). The project demonstrates scalable sorting of large datasets across multiple processes and investigates the trade-offs between computation and communication in distributed environments.
 
 ## Table of Contents
-1. [Overview](#overview)
-2. [Setup](#setup)
-3. [Compilation and Execution](#compilation-and-execution)
+1. [Introduction](#introduction)
+2. [Setup and Requirements](#setup-and-requirements)
+3. [Compilation and Usage](#compilation-and-usage)
 4. [Directory Structure](#directory-structure)
 5. [Key Features](#key-features)
-6. [Performance Insights](#performance-insights)
-7. [Debugging and Cleanup](#debugging-and-cleanup)
+5. [Performance Analysis](#performance-analysis)
+7. [Debugging and Verification](#debugging-and-verification)
 
-## Overview
+## Introduction
 
 The **Bitonic Sort** algorithm is a comparison-based sorting method, ideal for parallel architectures due to its predictable and structured communication patterns. In this implementation:
 
@@ -20,7 +20,7 @@ The **Bitonic Sort** algorithm is a comparison-based sorting method, ideal for p
 - Processes exchange and merge data using the Bitonic Sort approach, leveraging MPI for inter-process communication.
 - A hybrid strategy minimizes communication overhead by combining sequential and parallel phases.
 
-## Setup
+## Setup and Requirements
 
 Ensure the following dependencies are installed:
 
@@ -28,7 +28,7 @@ Ensure the following dependencies are installed:
 - **C Compiler**: GCC or equivalent with MPI support.
 - **Make**: For building the project.
 
-## Compilation and Execution
+## Compilation and Usage
 
 ### Compilation
 
@@ -85,7 +85,7 @@ This command will sort \(2^{16}\) elements using \(2^4 = 16\) processes.
 - Built-in timers measure local sorting, communication, and overall execution time.
 - Debug mode enables detailed logging of intermediate states.
 
-## Performance Insights
+## Performance Analysis
 
 ### Speedup and Efficiency
 - **Scalability**: Speedup increases with the number of processes but diminishes due to communication overhead as the process count grows.
