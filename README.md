@@ -1,39 +1,51 @@
 # Parallel and Distributed Systems - Exercise 2: MPI Bitonic Sort
 
-This repository contains an implementation of the Bitonic Sort algorithm designed for distributed execution using MPI (Message Passing Interface). The project leverages parallel processing to sort large datasets across multiple processes efficiently.
+This repository contains a hybrid parallel-sequential implementation of the Bitonic Sort algorithm designed for distributed execution using MPI (Message Passing Interface). The project demonstrates scalable sorting of large datasets across multiple processes and investigates the trade-offs between computation and communication in distributed environments.
+
+## Table of Contents
+1. [Overview](#overview)
+2. [Setup](#setup)
+3. [Compilation and Execution](#compilation-and-execution)
+4. [Directory Structure](#directory-structure)
+5. [Key Features](#key-features)
+6. [Performance Insights](#performance-insights)
+7. [Debugging and Cleanup](#debugging-and-cleanup)
 
 ## Overview
 
-The **Bitonic Sort** algorithm is a parallel sorting method that sorts data through a sequence of compare-and-swap operations. This implementation extends the algorithm to run on a distributed system using the **MPI** framework, enabling scalability across multiple processes. Key features include:
+The **Bitonic Sort** algorithm is a comparison-based sorting method, ideal for parallel architectures due to its predictable and structured communication patterns. In this implementation:
 
-- Local sorting using **qsort**.
-- Hypercube communication for inter-process data exchange.
-- Performance benchmarking with built-in timers.
+- The dataset is divided among processes in a distributed memory system.
+- Local sorting is performed using a sequential algorithm (e.g., `qsort`).
+- Processes exchange and merge data using the Bitonic Sort approach, leveraging MPI for inter-process communication.
+- A hybrid strategy minimizes communication overhead by combining sequential and parallel phases.
 
-## Requirements
+## Setup
 
-Before running the program, ensure you have the following installed:
+Ensure the following dependencies are installed:
 
 - **MPI Implementation**: Compatible with OpenMPI or MPICH.
-- **Linux/Unix Environment**: Required for running the shell commands.
+- **C Compiler**: GCC or equivalent with MPI support.
 - **Make**: For building the project.
 
-## How to Compile and Run
+## Compilation and Execution
 
 ### Compilation
 
-To compile the program, use the provided `Makefile`. Ensure that the required source files (`main.c`, `bitonic_sort.c`, and `utilities.c`) and header files are in their respective directories.
+Use the provided `Makefile` to compile the source code:
 
 ```bash
 make
 ```
 
+This generates an executable named `mpi_bitonic_sort` in the `bin/` directory.
+
 ### Running the Program
 
-The program uses two parameters, `q` and `p`, to control the size of the dataset and the number of processes:
+The program takes the following parameters:
 
-- `q`: Log2 of the number of elements to sort.
-- `p`: Log2 of the number of processes.
+- `q`: Log₂ of the number of elements per process.
+- `p`: Log₂ of the total number of processes.
 
 #### Run Command
 
@@ -52,24 +64,36 @@ This command will sort \(2^{16}\) elements using \(2^4 = 16\) processes.
 
 ## Directory Structure
 
-- **`src`**: Contains the source code (`main.c`, `bitonic_sort.c`, `utilities.c`).
-- **`inc`**: Contains header files (`config.h`, `utilities.h`, `bitonic_sort.h`).
-- **`Makefile`**: Used for building and cleaning the project.
+- **`src`**: Source files (`main.c`, `bitonic_sort.c`, `utilities.c`).
+- **`inc`**: Header files (`config.h`, `utilities.h`, `bitonic_sort.h`).
+- **`Makefile`**: For building, running, and cleaning the project.
 
-## Key Functions
+## Key Features
 
-### Utilities
+### 1. Hybrid Sorting Approach
+- **Local Sorting**: Each process sorts its local data using `qsort`.
+- **Distributed Sorting**: Processes exchange data in a hypercube communication topology, performing compare-and-swap operations to build and merge bitonic sequences.
 
-- **Argument Parsing**: Ensures valid `q` and `p` values.
-- **Local Initialization**: Fills the array with random integers.
-- **Verification**: Compares distributed sorting with a sequential reference.
-- **Timing and Debugging**: Measures performance and prints debugging info.
+### 2. Optimized Communication
+- **Non-Blocking Communication**: Uses MPI’s non-blocking send/receive functions to overlap computation and communication.
+- **Chunked Data Exchange**: Breaks data into smaller chunks to improve communication efficiency.
 
-### Bitonic Sort
+### 3. Elbow Sort
+- **Linear Complexity**: Used for merging locally bitonic sequences, leveraging the sorted nature of the input.
 
-- **Local Sorting**: Uses `qsort` for initial sorting.
-- **Hypercube Exchange**: Performs compare-and-swap operations across processes.
-- **Elbow Sort**: Merges cyclic bitonic sequences.
+### 4. Performance Metrics
+- Built-in timers measure local sorting, communication, and overall execution time.
+- Debug mode enables detailed logging of intermediate states.
+
+## Performance Insights
+
+### Speedup and Efficiency
+- **Scalability**: Speedup increases with the number of processes but diminishes due to communication overhead as the process count grows.
+- **Efficiency**: Best for larger datasets where computation amortizes communication costs.
+
+### Communication Overhead
+- Measured as a percentage of total execution time, highlighting the trade-off between computation and communication.
+- Overhead increases with more processes but is mitigated by non-blocking communication and efficient topology mapping.
 
 ## Debugging and Verification
 
