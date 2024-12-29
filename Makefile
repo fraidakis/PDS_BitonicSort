@@ -1,14 +1,41 @@
+# Makefile for MPI Bitonic Sort
+
+# Compiler and flags
 CC = mpicc
-CFLAGS = -I/usr/lib/x86_64-linux-gnu/openmpi/include
-LDFLAGS = -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi
+CFLAGS = -Wall -O3
 
-all: start
+# Executable name
+EXEC = bitonic_sort
 
-start: start.o
-    $(CC) -o start start.o $(LDFLAGS)
+# Source and include directories
+SRC_DIR = src
+INC_DIR = inc
 
-start.o: start.c
-    $(CC) $(CFLAGS) -c start.c
+# Source files
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/bitonic_sort.c $(SRC_DIR)/utilities.c
 
+# Header files (dependencies)
+HEADERS = $(INC_DIR)/config.h
+
+# Default target
+all: $(EXEC)
+
+# Compile and link in a single step
+$(EXEC): $(SRCS) $(HEADERS)
+	$(CC) $(CFLAGS) -I$(INC_DIR) $^ -o $@
+
+# Run the program with arguments q and p
+run: $(EXEC)
+	@if [ "$(q)" = "" ] || [ "$(p)" = "" ]; then \
+		echo "Usage: make run q=<value> p=<value>"; \
+		exit 1; \
+	fi; \
+	procs=$$(echo "2^$(p)" | bc); \
+	mpiexec --oversubscribe -n $${procs} ./$(EXEC) $(q) $(p)
+
+# Clean up build files
 clean:
-    rm -f start start.o
+	rm -f $(EXEC)
+
+# Phony targets
+.PHONY: all clean run
