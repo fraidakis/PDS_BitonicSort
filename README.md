@@ -95,6 +95,8 @@ This command will sort \(2^{16}\) elements using \(2^4 = 16\) processes.
 - Measured as a percentage of total execution time, highlighting the trade-off between computation and communication.
 - Overhead increases with more processes but is mitigated by non-blocking communication and efficient topology mapping.
 
+![Sorting Time vs. Processes](./plots/breakdown_results.png)
+
 ## Debugging and Verification
 
 To enable debugging or sequential verification, uncomment the relevant lines in `config.h`:
