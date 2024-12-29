@@ -38,7 +38,7 @@ Use the provided `Makefile` to compile the source code:
 make
 ```
 
-This generates an executable named `mpi_bitonic_sort` in the `bin/` directory.
+This generates an executable named `mpi_bitonic_sort`.
 
 ### Running the Program
 
