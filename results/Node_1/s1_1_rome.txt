@@ -1,0 +1,101 @@
+Job ID 1874086 
+
+
+q: 20, p: 0
+
+Sorting 1048576 elements:
+LocalSort: 0.101211 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 0.101211 seconds
+
+
+q: 21, p: 0
+
+Sorting 2097152 elements:
+LocalSort: 0.204652 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 0.204652 seconds
+
+
+q: 22, p: 0
+
+Sorting 4194304 elements:
+LocalSort: 0.418755 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 0.418755 seconds
+
+
+q: 23, p: 0
+
+Sorting 8388608 elements:
+LocalSort: 0.854429 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 0.854430 seconds
+
+
+q: 24, p: 0
+
+Sorting 16777216 elements:
+LocalSort: 1.755515 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 1.755516 seconds
+
+
+q: 25, p: 0
+
+Sorting 33554432 elements:
+LocalSort: 3.564873 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 3.564873 seconds
+
+
+q: 26, p: 0
+
+Sorting 67108864 elements:
+LocalSort: 7.228457 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 7.228458 seconds
+
+
+q: 27, p: 0
+
+Sorting 134217728 elements:
+LocalSort: 14.829212 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 14.829213 seconds
+
+
+q: 28, p: 0
+
+Sorting 268435456 elements:
+LocalSort: 29.944583 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 29.944583 seconds
+
+
+q: 29, p: 0
+
+Sorting 536870912 elements:
+LocalSort: 61.944154 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 61.944155 seconds
+
+
+q: 30, p: 0
+
+Sorting 1073741824 elements:
+LocalSort: 125.856366 seconds
+ElbowSort: 0.000000 seconds
+Communication: 0.000000 seconds
+Total: 125.856367 seconds
+

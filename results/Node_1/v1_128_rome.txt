@@ -1,0 +1,75 @@
+Job ID 1874119 
+
+
+q: 20, p: 7
+
+Sorting 134217728 elements:
+LocalSort: 0.125912 seconds
+ElbowSort: 0.111502 seconds
+Communication: 1.100998 seconds
+Total: 1.338433 seconds
+
+
+q: 21, p: 7
+
+Sorting 268435456 elements:
+LocalSort: 0.290527 seconds
+ElbowSort: 0.243344 seconds
+Communication: 2.208349 seconds
+Total: 2.742246 seconds
+
+
+q: 22, p: 7
+
+Sorting 536870912 elements:
+LocalSort: 0.607234 seconds
+ElbowSort: 0.438308 seconds
+Communication: 4.296759 seconds
+Total: 5.342328 seconds
+
+
+q: 23, p: 7
+
+Sorting 1073741824 elements:
+LocalSort: 1.236082 seconds
+ElbowSort: 0.963388 seconds
+Communication: 8.378532 seconds
+Total: 10.578029 seconds
+
+
+q: 24, p: 7
+
+Sorting 2147483648 elements:
+LocalSort: 2.464356 seconds
+ElbowSort: 2.052564 seconds
+Communication: 16.521075 seconds
+Total: 21.038019 seconds
+
+
+q: 25, p: 7
+
+Sorting 4294967296 elements:
+LocalSort: 5.043310 seconds
+ElbowSort: 4.339166 seconds
+Communication: 32.198572 seconds
+Total: 41.581074 seconds
+
+
+q: 26, p: 7
+
+Sorting 8589934592 elements:
+LocalSort: 10.625609 seconds
+ElbowSort: 8.778906 seconds
+Communication: 64.138927 seconds
+Total: 83.543468 seconds
+
+
+q: 27, p: 7
+
+Sorting 17179869184 elements:
+LocalSort: 22.530855 seconds
+ElbowSort: 17.738539 seconds
+Communication: 128.767892 seconds
+Total: 169.037314 seconds
+
+

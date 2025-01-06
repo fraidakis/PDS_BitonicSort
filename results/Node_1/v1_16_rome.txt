@@ -1,0 +1,102 @@
+Job ID 1874106 
+
+
+q: 20, p: 4
+
+Sorting 16777216 elements:
+LocalSort: 0.099638 seconds
+ElbowSort: 0.040984 seconds
+Communication: 0.046797 seconds
+Total: 0.187425 seconds
+
+
+q: 21, p: 4
+
+Sorting 33554432 elements:
+LocalSort: 0.203562 seconds
+ElbowSort: 0.079698 seconds
+Communication: 0.089679 seconds
+Total: 0.372944 seconds
+
+
+q: 22, p: 4
+
+Sorting 67108864 elements:
+LocalSort: 0.423693 seconds
+ElbowSort: 0.166794 seconds
+Communication: 0.187120 seconds
+Total: 0.777616 seconds
+
+
+q: 23, p: 4
+
+Sorting 134217728 elements:
+LocalSort: 0.851385 seconds
+ElbowSort: 0.355653 seconds
+Communication: 0.417139 seconds
+Total: 1.624187 seconds
+
+
+q: 24, p: 4
+
+Sorting 268435456 elements:
+LocalSort: 1.747410 seconds
+ElbowSort: 0.705468 seconds
+Communication: 0.776277 seconds
+Total: 3.229165 seconds
+
+
+q: 25, p: 4
+
+Sorting 536870912 elements:
+LocalSort: 3.522083 seconds
+ElbowSort: 1.310330 seconds
+Communication: 1.474095 seconds
+Total: 6.306518 seconds
+
+
+q: 26, p: 4
+
+Sorting 1073741824 elements:
+LocalSort: 7.262708 seconds
+ElbowSort: 2.783172 seconds
+Communication: 3.042126 seconds
+Total: 13.088017 seconds
+
+
+q: 27, p: 4
+
+Sorting 2147483648 elements:
+LocalSort: 14.905992 seconds
+ElbowSort: 5.504062 seconds
+Communication: 6.092760 seconds
+Total: 26.502825 seconds
+
+
+q: 28, p: 4
+
+Sorting 4294967296 elements:
+LocalSort: 29.740280 seconds
+ElbowSort: 10.571669 seconds
+Communication: 11.266443 seconds
+Total: 51.578400 seconds
+
+
+q: 29, p: 4
+
+Sorting 8589934592 elements:
+LocalSort: 60.623095 seconds
+ElbowSort: 21.040654 seconds
+Communication: 21.974914 seconds
+Total: 103.638673 seconds
+
+
+q: 30, p: 4
+
+Sorting 17179869184 elements:
+LocalSort: 125.328779 seconds
+ElbowSort: 42.750953 seconds
+Communication: 44.589266 seconds
+Total: 212.669009 seconds
+
+

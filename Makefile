@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CC = mpicc
-CFLAGS = -Wall -O3
+CFLAGS = -Wall -O3 
 
 # Executable name
 EXEC = bitonic_sort

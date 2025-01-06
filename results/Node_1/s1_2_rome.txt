@@ -1,0 +1,103 @@
+Job ID 1874093 
+
+
+q: 20, p: 1
+
+Sorting 2097152 elements:
+LocalSort: 0.100267 seconds
+ElbowSort: 0.010346 seconds
+Communication: 0.003906 seconds
+Total: 0.114519 seconds
+
+
+q: 21, p: 1
+
+Sorting 4194304 elements:
+LocalSort: 0.206957 seconds
+ElbowSort: 0.020480 seconds
+Communication: 0.012682 seconds
+Total: 0.240121 seconds
+
+
+q: 22, p: 1
+
+Sorting 8388608 elements:
+LocalSort: 0.422938 seconds
+ElbowSort: 0.041326 seconds
+Communication: 0.022139 seconds
+Total: 0.486404 seconds
+
+
+q: 23, p: 1
+
+Sorting 16777216 elements:
+LocalSort: 0.857511 seconds
+ElbowSort: 0.082301 seconds
+Communication: 0.037876 seconds
+Total: 0.977689 seconds
+
+
+q: 24, p: 1
+
+Sorting 33554432 elements:
+LocalSort: 1.755802 seconds
+ElbowSort: 0.164133 seconds
+Communication: 0.075038 seconds
+Total: 1.994974 seconds
+
+
+q: 25, p: 1
+
+Sorting 67108864 elements:
+LocalSort: 3.585623 seconds
+ElbowSort: 0.325257 seconds
+Communication: 0.102095 seconds
+Total: 4.012977 seconds
+
+
+q: 26, p: 1
+
+Sorting 134217728 elements:
+LocalSort: 7.336043 seconds
+ElbowSort: 0.652274 seconds
+Communication: 0.262797 seconds
+Total: 8.251115 seconds
+
+
+q: 27, p: 1
+
+Sorting 268435456 elements:
+LocalSort: 14.833623 seconds
+ElbowSort: 1.296294 seconds
+Communication: 0.284163 seconds
+Total: 16.414082 seconds
+
+
+      8 cn45.it.auth.gr
+Using 2 MPI processes
+q: 28, p: 1
+
+Sorting 536870912 elements:
+LocalSort: 30.257402 seconds
+ElbowSort: 2.588391 seconds
+Communication: 0.602243 seconds
+Total: 33.448038 seconds
+
+
+q: 29, p: 1
+
+Sorting 1073741824 elements:
+LocalSort: 61.267169 seconds
+ElbowSort: 5.176743 seconds
+Communication: 1.180367 seconds
+Total: 67.624281 seconds
+
+
+q: 30, p: 1
+
+Sorting 2147483648 elements:
+LocalSort: 124.621715 seconds
+ElbowSort: 10.306551 seconds
+Communication: 2.886175 seconds
+Total: 137.814443 seconds
+

@@ -122,9 +122,9 @@ void compare_and_swap(int *a, int *b, bool keep_min, int size)
     {
         if ((a[i] > b[i]) == keep_min) // If a[i] > b[i] and keep_min is true, swap
         {
-            int temp = a[i];
+            // int temp = a[i];
             a[i] = b[i];
-            b[i] = temp;
+            // b[i] = temp;
         }
     }
 }
