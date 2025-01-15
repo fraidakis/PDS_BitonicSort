@@ -1,0 +1,97 @@
+Job ID 1872528 
+
+
+      8 cn32.it.auth.gr
+      8 cn37.it.auth.gr
+      8 cn45.it.auth.gr
+      8 cn48.it.auth.gr
+q: 20, p: 5
+
+Sorting 33554432 elements:
+LocalSort: 0.099310 seconds
+ElbowSort: 0.050581 seconds
+Communication: 0.064209 seconds
+Total: 0.214106 seconds
+
+
+q: 21, p: 5
+
+Sorting 67108864 elements:
+LocalSort: 0.203644 seconds
+ElbowSort: 0.099791 seconds
+Communication: 0.118339 seconds
+Total: 0.421783 seconds
+
+
+q: 22, p: 5
+
+Sorting 134217728 elements:
+LocalSort: 0.414709 seconds
+ElbowSort: 0.203031 seconds
+Communication: 0.219221 seconds
+Total: 0.836972 seconds
+
+
+q: 23, p: 5
+
+Sorting 268435456 elements:
+LocalSort: 0.844578 seconds
+ElbowSort: 0.417516 seconds
+Communication: 0.463850 seconds
+Total: 1.725955 seconds
+
+
+q: 24, p: 5
+
+Sorting 536870912 elements:
+LocalSort: 1.720544 seconds
+ElbowSort: 0.817560 seconds
+Communication: 0.993833 seconds
+Total: 3.531949 seconds
+
+
+q: 25, p: 5
+
+Sorting 1073741824 elements:
+LocalSort: 3.513791 seconds
+ElbowSort: 1.646529 seconds
+Communication: 1.764300 seconds
+Total: 6.924633 seconds
+
+
+q: 26, p: 5
+
+Sorting 2147483648 elements:
+LocalSort: 7.172098 seconds
+ElbowSort: 3.320086 seconds
+Communication: 3.096174 seconds
+Total: 13.588370 seconds
+
+
+q: 27, p: 5
+
+Sorting 4294967296 elements:
+LocalSort: 14.712647 seconds
+ElbowSort: 6.547928 seconds
+Communication: 7.860719 seconds
+Total: 29.121306 seconds
+
+
+q: 28, p: 5
+
+Sorting 8589934592 elements:
+LocalSort: 29.965434 seconds
+ElbowSort: 13.010321 seconds
+Communication: 15.668501 seconds
+Total: 58.644268 seconds
+
+
+q: 29, p: 5
+
+Sorting 17179869184 elements:
+LocalSort: 60.665620 seconds
+ElbowSort: 26.104266 seconds
+Communication: 28.918413 seconds
+Total: 115.688312 seconds
+
+

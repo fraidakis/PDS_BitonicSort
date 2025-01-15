@@ -1,0 +1,79 @@
+Job ID 1872542 
+
+
+     32 cn32.it.auth.gr
+     32 cn37.it.auth.gr
+     32 cn45.it.auth.gr
+     32 cn48.it.auth.gr
+q: 20, p: 7
+
+Sorting 134217728 elements:
+LocalSort: 0.099728 seconds
+ElbowSort: 0.071212 seconds
+Communication: 0.315637 seconds
+Total: 0.486587 seconds
+
+
+q: 21, p: 7
+
+Sorting 268435456 elements:
+LocalSort: 0.204545 seconds
+ElbowSort: 0.143177 seconds
+Communication: 0.639299 seconds
+Total: 0.987035 seconds
+
+
+q: 22, p: 7
+
+Sorting 536870912 elements:
+LocalSort: 0.423806 seconds
+ElbowSort: 0.294394 seconds
+Communication: 1.250940 seconds
+Total: 1.969160 seconds
+
+
+q: 23, p: 7
+
+Sorting 1073741824 elements:
+LocalSort: 0.867372 seconds
+ElbowSort: 0.614150 seconds
+Communication: 2.538418 seconds
+Total: 4.019962 seconds
+
+
+q: 24, p: 7
+
+Sorting 2147483648 elements:
+LocalSort: 1.786011 seconds
+ElbowSort: 1.240095 seconds
+Communication: 5.030654 seconds
+Total: 8.056784 seconds
+
+
+q: 25, p: 7
+
+Sorting 4294967296 elements:
+LocalSort: 3.668431 seconds
+ElbowSort: 2.480161 seconds
+Communication: 10.084396 seconds
+Total: 16.233011 seconds
+
+
+q: 26, p: 7
+
+Sorting 8589934592 elements:
+LocalSort: 7.369383 seconds
+ElbowSort: 4.914230 seconds
+Communication: 20.567246 seconds
+Total: 32.850882 seconds
+
+
+q: 27, p: 7
+
+Sorting 17179869184 elements:
+LocalSort: 15.011973 seconds
+ElbowSort: 9.891134 seconds
+Communication: 40.502067 seconds
+Total: 65.405197 seconds
+
+
