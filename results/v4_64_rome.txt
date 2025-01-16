@@ -1,10 +1,6 @@
 Job ID 1872534 
 
 
-     16 cn32.it.auth.gr
-     16 cn37.it.auth.gr
-     16 cn45.it.auth.gr
-     16 cn48.it.auth.gr
 q: 20, p: 6
 
 Sorting 67108864 elements:

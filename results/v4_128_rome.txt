@@ -1,10 +1,6 @@
 Job ID 1872542 
 
 
-     32 cn32.it.auth.gr
-     32 cn37.it.auth.gr
-     32 cn45.it.auth.gr
-     32 cn48.it.auth.gr
 q: 20, p: 7
 
 Sorting 134217728 elements:

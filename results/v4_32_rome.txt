@@ -1,10 +1,6 @@
 Job ID 1872528 
 
 
-      8 cn32.it.auth.gr
-      8 cn37.it.auth.gr
-      8 cn45.it.auth.gr
-      8 cn48.it.auth.gr
 q: 20, p: 5
 
 Sorting 33554432 elements:
